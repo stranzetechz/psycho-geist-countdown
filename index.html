@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090611">
+<title>PSYCHO GEIST | GTA VI Countdown</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090611;color:#fff;font-family:Arial,Helvetica,sans-serif}
+  body{display:grid;place-items:center}
+  .stage{position:relative;width:100vw;height:100vh;min-height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(ellipse at 50% 72%,rgba(255,0,145,.24),transparent 42%),
+      radial-gradient(ellipse at 12% 22%,rgba(112,37,255,.28),transparent 38%),
+      linear-gradient(155deg,#090611 0%,#160b27 48%,#080611 100%)}
+  .stage:before{content:"";position:absolute;inset:0;background:
+    linear-gradient(180deg,transparent 55%,rgba(255,0,153,.12)),
+    repeating-linear-gradient(90deg,transparent 0 8.2%,rgba(255,255,255,.025) 8.25% 8.35%)}
+  .glow{position:absolute;width:62vw;height:62vw;border-radius:50%;filter:blur(65px);opacity:.17;background:#ec168e;bottom:-46vw;left:19vw}
+  .city{position:absolute;bottom:0;left:0;right:0;height:28%;display:flex;align-items:end;gap:.5%;opacity:.42}
+  .building{flex:1;background:linear-gradient(180deg,#29123d,#090611);border-top:2px solid rgba(255,66,193,.55);box-shadow:0 0 18px rgba(255,0,170,.15)}
+  .building:nth-child(3n){height:75%}.building:nth-child(3n+1){height:48%}.building:nth-child(3n+2){height:62%}
+  .building:after{content:"";display:block;height:100%;background:repeating-linear-gradient(0deg,transparent 0 13px,rgba(255,105,211,.18) 14px 16px)}
+  .content{position:relative;z-index:2;width:min(92%,1100px);text-align:center;padding:3vh 2vw}
+  .brand{font-weight:900;letter-spacing:.16em;font-size:clamp(16px,2.1vw,28px);text-transform:uppercase;text-shadow:0 0 18px #ff168f}
+  .brand span{color:#ff299e}
+  .eyebrow{margin:4vh 0 1vh;color:#f7b9e3;letter-spacing:.38em;font-size:clamp(10px,1.5vw,18px);font-weight:700}
+  h1{margin:0;font-size:clamp(35px,8vw,104px);line-height:.95;font-weight:1000;letter-spacing:.035em;text-shadow:0 0 22px rgba(255,35,166,.5)}
+  h1 .vi{color:#ff299e}
+  .sub{margin:2vh 0 3vh;color:#e7d8ee;font-size:clamp(12px,1.8vw,22px);letter-spacing:.16em}
+  .timer{display:flex;justify-content:center;gap:clamp(7px,2vw,24px);margin:2vh auto 3vh}
+  .unit{min-width:clamp(64px,13vw,150px);padding:clamp(10px,2.1vw,24px) 8px;border:1px solid rgba(255,77,190,.7);border-radius:12px;background:rgba(13,7,25,.72);box-shadow:0 0 24px rgba(255,0,153,.15),inset 0 0 22px rgba(127,45,255,.12)}
+  .num{display:block;font-variant-numeric:tabular-nums;font-size:clamp(30px,6.5vw,76px);font-weight:900;line-height:1}
+  .label{display:block;margin-top:9px;color:#ff9bd7;font-size:clamp(8px,1.15vw,14px);letter-spacing:.2em;font-weight:800}
+  .date{display:inline-block;margin-top:1vh;padding:12px 26px;border-radius:99px;background:linear-gradient(90deg,#a80b78,#f3299b);font-weight:900;letter-spacing:.14em;font-size:clamp(12px,1.8vw,21px);box-shadow:0 0 28px rgba(255,0,153,.35)}
+  .footer{margin-top:4vh;color:#d7c8e2;font-size:clamp(9px,1.3vw,16px);letter-spacing:.22em}
+  .footer b{color:#ff5cba}
+  .note{margin-top:1.5vh;color:rgba(255,255,255,.55);font-size:clamp(8px,1vw,12px);letter-spacing:.08em}
+  @media(max-aspect-ratio:1/1){.content{width:96%;padding:2vh 1vw}.eyebrow{margin-top:3vh}.unit{min-width:21vw}.timer{gap:2vw}.footer{margin-top:3vh}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="glow"></div>
+  <div class="city" aria-hidden="true">
+    <i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i>
+  </div>
+  <main class="content">
+    <div class="brand">PSYCHO <span>GEIST</span></div>
+    <div class="eyebrow">THE WAIT IS ALMOST OVER</div>
+    <h1>GRAND THEFT AUTO <span class="vi">VI</span></h1>
+    <div class="sub">THE COUNTDOWN TO VICE CITY</div>
+    <div class="timer" role="timer" aria-live="off">
+      <div class="unit"><span class="num" id="days">00</span><span class="label">DAYS</span></div>
+      <div class="unit"><span class="num" id="hours">00</span><span class="label">HOURS</span></div>
+      <div class="unit"><span class="num" id="minutes">00</span><span class="label">MINUTES</span></div>
+      <div class="unit"><span class="num" id="seconds">00</span><span class="label">SECONDS</span></div>
+    </div>
+    <div class="date">19 NOVEMBER 2026 · 12:00 AM IST</div>
+    <div class="footer">JOIN THE <b>GEIST COMMUNITY</b> · EVERY SECRET HAS A STORY</div>
+    <div class="note">COUNTDOWN TARGET: INDIA STANDARD TIME</div>
+  </main>
+</div>
+<script>
+(function(){
+  // 19 November 2026 at 00:00:00 India Standard Time (UTC+05:30)
+  const target = new Date("2026-11-19T00:00:00+05:30").getTime();
+  const ids = ["days","hours","minutes","seconds"];
+  function tick(){
+    let remaining = Math.max(0, target - Date.now());
+    const values = [
+      Math.floor(remaining / 86400000),
+      Math.floor((remaining % 86400000) / 3600000),
+      Math.floor((remaining % 3600000) / 60000),
+      Math.floor((remaining % 60000) / 1000)
+    ];
+    ids.forEach((id,i)=>document.getElementById(id).textContent=String(values[i]).padStart(2,"0"));
+    if(remaining===0) document.querySelector(".eyebrow").textContent="THE WAIT IS OVER";
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
