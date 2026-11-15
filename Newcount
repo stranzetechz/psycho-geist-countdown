@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080611">
+  <meta name="description" content="Psycho Geist GTA VI countdown livestream screen">
+  <title>PSYCHO GEIST | GTA VI Countdown</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; }
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #05040b;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    /* The content canvas is always 16:9. On a portrait phone it is letterboxed. */
+    .stage {
+      position: relative;
+      isolation: isolate;
+      width: min(100vw, calc(100svh * 16 / 9));
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse at 50% 83%, rgba(255, 18, 145, .26), transparent 38%),
+        radial-gradient(ellipse at 13% 18%, rgba(114, 52, 255, .25), transparent 40%),
+        linear-gradient(145deg, #080611 0%, #190b2b 52%, #07050e 100%);
+    }
+    .stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .55;
+      background:
+        linear-gradient(180deg, transparent 45%, rgba(255, 20, 150, .16)),
+        repeating-linear-gradient(90deg, transparent 0 7.9%, rgba(255,255,255,.035) 8% 8.12%);
+    }
+    .sun {
+      position: absolute;
+      width: 25%;
+      aspect-ratio: 1;
+      top: 12%;
+      left: 37.5%;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ff9bcb, #fa278f 68%, #a51fff);
+      opacity: .2;
+      filter: blur(2px);
+      box-shadow: 0 0 70px rgba(255, 28, 159, .42);
+    }
+    .skyline {
+      position: absolute;
+      z-index: -1;
+      inset: auto 0 0;
+      height: 27%;
+      display: flex;
+      align-items: flex-end;
+      gap: .45%;
+      opacity: .6;
+    }
+    .building {
+      flex: 1 1 0;
+      min-width: 0;
+      background: linear-gradient(180deg, #321347, #090611);
+      border-top: 2px solid rgba(255, 89, 195, .55);
+      box-shadow: 0 0 16px rgba(255, 0, 153, .12);
+    }
+    .building:nth-child(4n+1) { height: 48%; }
+    .building:nth-child(4n+2) { height: 72%; }
+    .building:nth-child(4n+3) { height: 57%; }
+    .building:nth-child(4n) { height: 88%; }
+    .building::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, transparent 0 12px, rgba(255, 115, 210, .18) 13px 15px);
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 92%;
+      text-align: center;
+      padding: 2.5%;
+      transform: translateY(-1%);
+    }
+    .brand {
+      margin: 0 0 3.4%;
+      font-size: clamp(12px, 2.05vw, 27px);
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-shadow: 0 0 16px rgba(255, 37, 165, .75);
+    }
+    .brand span, .vi { color: #ff399f; }
+    .eyebrow {
+      margin: 0 0 1.1%;
+      color: #ffc0e4;
+      font-size: clamp(9px, 1.35vw, 17px);
+      font-weight: 700;
+      letter-spacing: .34em;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(27px, 7.3vw, 98px);
+      line-height: .98;
+      font-weight: 900;
+      letter-spacing: .015em;
+      text-shadow: 0 0 25px rgba(255, 35, 166, .38);
+    }
+    .subtitle {
+      margin: 2.2% 0 3.1%;
+      color: #f0dff3;
+      font-size: clamp(9px, 1.55vw, 20px);
+      font-weight: 700;
+      letter-spacing: .2em;
+    }
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: clamp(5px, 1.65vw, 22px);
+      margin: 0 auto 2.8%;
+    }
+    .unit {
+      flex: 0 1 17%;
+      min-width: 0;
+      padding: 2.1% 1% 1.8%;
+      border: 1px solid rgba(255, 92, 190, .76);
+      border-radius: clamp(6px, 1vw, 13px);
+      background: rgba(10, 6, 22, .82);
+      box-shadow: 0 0 22px rgba(255, 0, 153, .13), inset 0 0 20px rgba(127, 45, 255, .12);
+    }
+    .number {
+      display: block;
+      font-size: clamp(23px, 5.9vw, 76px);
+      line-height: 1;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+    .label {
+      display: block;
+      margin-top: 9%;
+      color: #ff9bd7;
+      font-size: clamp(7px, 1.05vw, 13px);
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+    .date {
+      display: inline-block;
+      padding: 1.15% 3.2%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #a80b78, #f3299b);
+      box-shadow: 0 0 26px rgba(255, 0, 153, .3);
+      font-size: clamp(9px, 1.55vw, 19px);
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+    .footer {
+      margin-top: 3.2%;
+      color: #e2d3e9;
+      font-size: clamp(7px, 1.05vw, 13px);
+      letter-spacing: .18em;
+    }
+    .footer strong { color: #ff64b9; }
+    @media (max-height: 420px) {
+      .content { padding: 1.2%; transform: none; }
+      .brand { margin-bottom: 1.8%; }
+      .subtitle { margin: 1.3% 0 1.8%; }
+      .timer { margin-bottom: 1.6%; }
+      .unit { padding: 1.3% 1% 1.1%; }
+      .footer { margin-top: 1.8%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="GTA VI countdown screen">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="skyline" aria-hidden="true">
+      <i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i>
+      <i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i>
+      <i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i>
+      <i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i>
+      <i class="building"></i><i class="building"></i><i class="building"></i><i class="building"></i>
+    </div>
+    <section class="content">
+      <p class="brand">PSYCHO <span>GEIST</span></p>
+      <p class="eyebrow" id="eyebrow">THE WAIT IS ALMOST OVER</p>
+      <h1>GRAND THEFT AUTO <span class="vi">VI</span></h1>
+      <p class="subtitle">THE COUNTDOWN TO VICE CITY</p>
+      <div class="timer" role="timer" aria-label="Time remaining">
+        <div class="unit"><span class="number" id="days">000</span><span class="label">DAYS</span></div>
+        <div class="unit"><span class="number" id="hours">00</span><span class="label">HOURS</span></div>
+        <div class="unit"><span class="number" id="minutes">00</span><span class="label">MINUTES</span></div>
+        <div class="unit"><span class="number" id="seconds">00</span><span class="label">SECONDS</span></div>
+      </div>
+      <div class="date">19 NOVEMBER 2026 · INDIA TIME</div>
+      <p class="footer">JOIN THE <strong>GEIST COMMUNITY</strong> · EVERY SECRET HAS A STORY</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      // Countdown target: 19 November 2026, 12:00 AM India Standard Time.
+      // To change the target, edit only the date string below.
+      var targetTime = new Date('2026-11-19T00:00:00+05:30').getTime();
+      var dayEl = document.getElementById('days');
+      var hourEl = document.getElementById('hours');
+      var minuteEl = document.getElementById('minutes');
+      var secondEl = document.getElementById('seconds');
+      var eyebrowEl = document.getElementById('eyebrow');
+
+      function pad(value, length) {
+        return String(value).padStart(length, '0');
+      }
+
+      function updateCountdown() {
+        var remaining = Math.max(0, targetTime - Date.now());
+        var days = Math.floor(remaining / 86400000);
+        var hours = Math.floor((remaining % 86400000) / 3600000);
+        var minutes = Math.floor((remaining % 3600000) / 60000);
+        var seconds = Math.floor((remaining % 60000) / 1000);
+
+        dayEl.textContent = pad(days, 3);
+        hourEl.textContent = pad(hours, 2);
+        minuteEl.textContent = pad(minutes, 2);
+        secondEl.textContent = pad(seconds, 2);
+
+        if (remaining === 0) {
+          eyebrowEl.textContent = 'THE WAIT IS OVER';
+        }
+      }
+
+      updateCountdown();
+      window.setInterval(updateCountdown, 1000);
+    }());
+  </script>
+</body>
+</html>
